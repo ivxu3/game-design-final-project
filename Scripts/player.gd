@@ -38,11 +38,11 @@ func _physics_process(delta):
 
 func _process(_delta):
 	if velocity.x != 0:
-		sprite.flip_h = velocity.x > 0
+		sprite.flip_h = velocity.x < 0
 
 	if global_position.y > 500:
 		game_over()
-
+		 
 	_manage_animation()
 
 func _manage_animation():
