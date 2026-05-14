@@ -60,6 +60,7 @@ position = Vector2(6, -261)
 scene_to_load = ExtResource("8_xrdnt")
 
 [node name="Player" parent="." instance=ExtResource("3_xfk5q")]
+position = Vector2(0, -8)
 
 [node name="Node" type="Node" parent="."]
 
