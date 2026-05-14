@@ -3,14 +3,15 @@ extends CharacterBody2D
 signal OnUpdateHealth (health: int)
 signal OnUpdateScore (score: int)
 
-@export var move_speed : float = 100
-@export var acceleration : float = 50
-@export var braking : float = 20
+@export var move_speed : float = 55
+@export var acceleration : float = 5
+@export var braking : float = 5
 @export var gravity : float = 500
-@export var jump_force : float = 200
-@export var health: int = 3
+@export var jump_force : float = 250
+@export var health : int = 3
 
 var move_input : float
+var off_of_floor : int = 0
 
 @onready var sprite : Sprite2D = $Sprite
 @onready var anim: AnimationPlayer = $AnimationPlayer
@@ -23,22 +24,28 @@ func _physics_process(delta):
 	# gravity
 	if not is_on_floor():
 		velocity.y += gravity * delta
+		off_of_floor += 1
+	else:
+		off_of_floor = 0
 	# move input
 	move_input = Input.get_axis("move_left", "move_right")
 	# movement
 	if move_input != 0:
 		velocity.x = lerp(velocity.x, move_input * move_speed, acceleration * delta)
-	else:
+	elif move_input == 0 and is_on_floor():
 		velocity.x = lerp(velocity.x, 0.0, braking * delta)
+	else:
+		velocity.x = lerp(velocity.x, 0.0, delta)
 # jumping
-	if Input.is_action_just_pressed("jump") and is_on_floor():
+	if Input.is_action_just_pressed("jump") and off_of_floor <= 4:
 		velocity.y = -jump_force
-
 	move_and_slide()
-
+	var current_speed = velocity.length()
+	$AnimationPlayer.speed_scale	 = current_speed / move_speed
+	
 func _process(_delta):
 	if velocity.x != 0:
-		sprite.flip_h = velocity.x > 0
+		sprite.flip_h = velocity.x < 0
 
 	if global_position.y > 500:
 		game_over()

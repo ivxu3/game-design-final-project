@@ -1,11 +1,20 @@
-[gd_scene load_steps=14 format=3 uid="uid://bycdqoj8doefv"]
+[gd_scene load_steps=23 format=3 uid="uid://bycdqoj8doefv"]
 
 [ext_resource type="Script" uid="uid://db5l0lqy2gmpb" path="res://Scripts/player.gd" id="1_cvnsp"]
 [ext_resource type="Texture2D" uid="uid://dyq7dh6jlegru" path="res://Sprites/Characters/character_0000.png" id="1_v0iea"]
-[ext_resource type="Texture2D" uid="uid://boym8rwk8fqpe" path="res://Sprites/Characters/character_0001.png" id="3_6t5aa"]
 [ext_resource type="Script" uid="uid://bytgwkwspuydq" path="res://Scripts/camera_shake.gd" id="3_x3wgy"]
+[ext_resource type="Texture2D" uid="uid://cdceys7ppcjly" path="res://Sprites/Characters/character_jump.png" id="4_3smsa"]
 [ext_resource type="Script" uid="uid://hfptd803ygap" path="res://Scripts/player_ui.gd" id="4_fkybt"]
+[ext_resource type="Texture2D" uid="uid://c0y7mrbiuko4a" path="res://Sprites/Characters/character_idle.png" id="4_h4iuc"]
 [ext_resource type="Texture2D" uid="uid://miq1be7j6s70" path="res://Sprites/Objects/tile_0044.png" id="4_vgqql"]
+[ext_resource type="Texture2D" uid="uid://cnr8cxe623o42" path="res://Sprites/Characters/character_walk1.png" id="5_7dp3o"]
+[ext_resource type="Texture2D" uid="uid://gqw02mnfhgpo" path="res://Sprites/Characters/character_walk2.png" id="6_h4iuc"]
+[ext_resource type="Texture2D" uid="uid://bwv0w6x3hndqg" path="res://Sprites/Characters/character_walk3.png" id="7_fd4e3"]
+[ext_resource type="Texture2D" uid="uid://c0dbtmupki870" path="res://Sprites/Characters/character_walk4.png" id="8_qqcod"]
+[ext_resource type="Texture2D" uid="uid://cns5cweimtv6f" path="res://Sprites/Characters/character_walk5.png" id="9_igrcy"]
+[ext_resource type="Texture2D" uid="uid://cnv4fvljpjchx" path="res://Sprites/Characters/character_walk6.png" id="10_fs7ks"]
+[ext_resource type="Texture2D" uid="uid://bfrn5opsodp2c" path="res://Sprites/Characters/character_walk7.png" id="11_l6n3p"]
+[ext_resource type="Texture2D" uid="uid://cir1h8vl0ipwb" path="res://Sprites/Characters/character_walk8.png" id="12_olqyp"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_x3wgy"]
 size = Vector2(14, 23)
@@ -37,7 +46,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("1_v0iea")]
+"values": [ExtResource("4_h4iuc")]
 }
 
 [sub_resource type="Animation" id="Animation_fkybt"]
@@ -52,12 +61,11 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("3_6t5aa")]
+"values": [ExtResource("4_3smsa")]
 }
 
 [sub_resource type="Animation" id="Animation_x3wgy"]
 resource_name = "move"
-length = 0.25
 loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -66,10 +74,10 @@ tracks/0/path = NodePath("Sprite:texture")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.13333334),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0, 0.125, 0.25, 0.375, 0.5, 0.625, 0.75, 0.875),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [ExtResource("3_6t5aa"), ExtResource("1_v0iea")]
+"values": [ExtResource("5_7dp3o"), ExtResource("6_h4iuc"), ExtResource("7_fd4e3"), ExtResource("8_qqcod"), ExtResource("9_igrcy"), ExtResource("10_fs7ks"), ExtResource("11_l6n3p"), ExtResource("12_olqyp")]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_3smsa"]
@@ -89,8 +97,9 @@ shadow_color = Color(0, 0, 0, 1)
 script = ExtResource("1_cvnsp")
 
 [node name="Sprite" type="Sprite2D" parent="."]
+position = Vector2(0, -2)
 texture = ExtResource("1_v0iea")
-offset = Vector2(0, -12)
+offset = Vector2(0, -11)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -11.5)
@@ -98,7 +107,7 @@ shape = SubResource("RectangleShape2D_x3wgy")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(0, -23)
-zoom = Vector2(2.5, 2.5)
+zoom = Vector2(4, 4)
 script = ExtResource("3_x3wgy")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
