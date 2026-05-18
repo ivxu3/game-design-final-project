@@ -28,7 +28,7 @@ func _physics_process(delta):
 	else:
 		off_of_floor = 0
 	# move input
-	move_input = Input.get_axis("move_left", "move_right")
+	move_input = Input.get_axis("left_move_left", "left_move_right")
 	# movement
 	if move_input != 0:
 		velocity.x = lerp(velocity.x, move_input * move_speed, acceleration * delta)
@@ -37,7 +37,7 @@ func _physics_process(delta):
 	else:
 		velocity.x = lerp(velocity.x, 0.0, delta)
 # jumping
-	if Input.is_action_just_pressed("jump") and off_of_floor <= 4:
+	if Input.is_action_just_pressed("left_jump") and off_of_floor <= 4:
 		velocity.y = -jump_force
 	move_and_slide()
 	var current_speed = velocity.length()
@@ -51,6 +51,13 @@ func _process(_delta):
 		game_over()
 
 	_manage_animation()
+
+	if Input.is_action_pressed("left_sprint"):
+		acceleration = 15
+		move_speed = 165
+	else:
+		acceleration = 5
+		move_speed = 55
 
 func _manage_animation():
 	if not is_on_floor():
