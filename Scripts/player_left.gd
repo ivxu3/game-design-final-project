@@ -8,7 +8,7 @@ signal OnUpdateScore (score: int)
 @export var braking : float = 5
 @export var gravity : float = 500
 @export var jump_force : float = 250
-@export var health : int = 3
+@export var health : int = 5
 
 var move_input : float
 var off_of_floor : int = 0
@@ -19,6 +19,9 @@ var off_of_floor : int = 0
 
 var take_damage_sfx : AudioStream = preload("res://Audio/take_damage.wav")
 var coin_sfx : AudioStream = preload	("res://Audio/coin.wav")
+
+func _ready() -> void:
+	add_to_group("player")
 
 func _physics_process(delta):
 	# gravity
