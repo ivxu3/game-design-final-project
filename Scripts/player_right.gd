@@ -8,11 +8,10 @@ signal OnUpdateScore (score: int)
 @export var braking : float = 5
 @export var gravity : float = 500
 @export var jump_force : float = 250
-@export var health : int = 3
+@export var health : int = 5
 
 var move_input : float
 var off_of_floor : int = 0
-var sprint_duration : int = 0
 
 @onready var sprite : Sprite2D = $Sprite
 @onready var anim: AnimationPlayer = $AnimationPlayer
@@ -20,6 +19,9 @@ var sprint_duration : int = 0
 
 var take_damage_sfx : AudioStream = preload("res://Audio/take_damage.wav")
 var coin_sfx : AudioStream = preload	("res://Audio/coin.wav")
+
+func _ready() -> void:
+	add_to_group("player")
 
 func _physics_process(delta):
 	# gravity
@@ -29,7 +31,7 @@ func _physics_process(delta):
 	else:
 		off_of_floor = 0
 	# move input
-	move_input = Input.get_axis("left_move_left", "left_move_right")
+	move_input = Input.get_axis("right_move_left", "right_move_right")
 	# movement
 	if move_input != 0:
 		velocity.x = lerp(velocity.x, move_input * move_speed, acceleration * delta)
@@ -38,7 +40,7 @@ func _physics_process(delta):
 	else:
 		velocity.x = lerp(velocity.x, 0.0, delta)
 # jumping
-	if Input.is_action_just_pressed("left_jump") and off_of_floor <= 4:
+	if Input.is_action_just_pressed("right_jump") and off_of_floor <= 4:
 		velocity.y = -jump_force
 	move_and_slide()
 	var current_speed = velocity.length()
@@ -53,17 +55,11 @@ func _process(_delta):
 
 	_manage_animation()
 
-	if sprint_duration > 0 and sprint_duration <= 30:
-		move_speed = 165
-	elif sprint_duration > 0 and sprint_duration > 30:
-		move_speed = 110
-
-	if Input.is_action_pressed("left_sprint"):
+	if Input.is_action_pressed("right_sprint"):
 		acceleration = 15
-		sprint_duration += 1
+		move_speed = 165
 	else:
 		acceleration = 5
-		sprint_duration = 0
 		move_speed = 55
 
 func _manage_animation():
