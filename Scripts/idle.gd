@@ -13,5 +13,5 @@ func transition():
 	if player_entered:
 		get_parent().change_state("Walk")
 
-func _on_player_detection_body_entered(body: Node2D) -> void:
+func _on_player_detection_body_entered(body):
 	player_entered = true
