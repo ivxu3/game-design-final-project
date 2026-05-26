@@ -61,7 +61,7 @@ tile_set = ExtResource("2_xfk5q")
 position = Vector2(6, -261)
 scene_to_load = ExtResource("8_xrdnt")
 
-[node name="Player1" parent="." instance=ExtResource("3_xfk5q")]
+[node name="Player" parent="." instance=ExtResource("3_xfk5q")]
 
 [node name="Node" type="Node" parent="."]
 
@@ -70,9 +70,7 @@ position = Vector2(270, -28)
 move_direction = Vector2(0, -23)
 move_speed = 10.0
 
-[node name="Camera2D" parent="." node_paths=PackedStringArray("player1", "player2") instance=ExtResource("8_wrinw")]
-player1 = NodePath("../Player1")
-player2 = NodePath("../Player2")
+[node name="Camera2D" parent="." instance=ExtResource("8_wrinw")]
 
 [node name="Player2" parent="." instance=ExtResource("9_wrinw")]
 position = Vector2(32, -7)
