@@ -1,0 +1,19 @@
+[gd_scene load_steps=2 format=3 uid="uid://8bntotpas2us"]
+
+[ext_resource type="Script" uid="uid://dyn3xofqpnodm" path="res://Scenes/weapon_upgrade_UI.gd" id="1_w7444"]
+
+[node name="WeaponupgradeUI" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_w7444")
+
+[node name="Window" type="Window" parent="."]
+oversampling_override = 1.0
+initial_position = 2
+size = Vector2i(600, 300)
+
+[connection signal="close_requested" from="Window" to="." method="_on_window_close_requested"]
