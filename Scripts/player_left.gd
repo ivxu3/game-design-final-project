@@ -44,7 +44,10 @@ func _physics_process(delta):
 		velocity.y = -jump_force
 	move_and_slide()
 	var current_speed = velocity.length()
-	$AnimationPlayer.speed_scale	 = current_speed / move_speed
+	if not Input.is_action_pressed("left_sprint"):
+		$AnimationPlayer.speed_scale = current_speed / move_speed
+	elif Input.is_action_pressed("left_sprint"):
+		$AnimationPlayer.speed_scale = 3
 	
 func _process(_delta):
 	if velocity.x != 0:
