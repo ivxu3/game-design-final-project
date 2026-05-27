@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://bycdqoj8doefv"]
+[gd_scene load_steps=23 format=3 uid="uid://bycdqoj8doefv"]
 
 [ext_resource type="Script" uid="uid://db5l0lqy2gmpb" path="res://Scripts/player.gd" id="1_cvnsp"]
 [ext_resource type="Script" uid="uid://bytgwkwspuydq" path="res://Scripts/camera_shake.gd" id="3_x3wgy"]
@@ -13,6 +13,8 @@
 [ext_resource type="Texture2D" uid="uid://cvj0lpysajbv1" path="res://Sprites/Characters/platformer character finished6.png" id="10_fs7ks"]
 [ext_resource type="Texture2D" uid="uid://dcxas61l2j485" path="res://Sprites/Characters/platformer character finished7.png" id="11_l6n3p"]
 [ext_resource type="Texture2D" uid="uid://ce8bb0jxtp61s" path="res://Sprites/Characters/platformer character finished8.png" id="12_olqyp"]
+[ext_resource type="PackedScene" uid="uid://de6neem2mpnve" path="res://Scenes/dagger.tscn" id="14_7dp3o"]
+[ext_resource type="Script" uid="uid://cjd4d41n0and7" path="res://Scripts/health.gd" id="15_h4iuc"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_x3wgy"]
 size = Vector2(14, 24.5)
@@ -142,5 +144,19 @@ expand_mode = 2
 offset_top = 80.0
 offset_right = 40.0
 offset_bottom = 103.0
-text = "Score: 500"
+text = "Score:500"
 label_settings = SubResource("LabelSettings_vgqql")
+
+[node name="dagger" parent="." instance=ExtResource("14_7dp3o")]
+position = Vector2(7, -2)
+
+[node name="Hurtbox" type="Area2D" parent="."]
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+position = Vector2(0, -5.75)
+shape = SubResource("RectangleShape2D_x3wgy")
+
+[node name="Health" type="Node" parent="."]
+script = ExtResource("15_h4iuc")
+metadata/_custom_type_script = "uid://cjd4d41n0and7"
