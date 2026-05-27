@@ -1,11 +1,13 @@
-[gd_scene load_steps=8 format=4 uid="uid://uohijffr6edw"]
+[gd_scene load_steps=10 format=4 uid="uid://uohijffr6edw"]
 
 [ext_resource type="Script" uid="uid://c3i5rpexykx3s" path="res://Scripts/background_parallax.gd" id="1_5e78q"]
 [ext_resource type="Texture2D" uid="uid://c55oj3jf4m3i0" path="res://Sprites/Tiles/Background_0.png" id="2_vwg62"]
 [ext_resource type="PackedScene" uid="uid://bycdqoj8doefv" path="res://Scenes/player.tscn" id="3_5rvg2"]
 [ext_resource type="TileSet" uid="uid://bc4v2peretduo" path="res://Sprites/Tiles/level_3.tres" id="4_s8nj6"]
 [ext_resource type="PackedScene" uid="uid://3yc6l4hoh8mt" path="res://Scenes/metal scrap.tscn" id="5_vwg62"]
+[ext_resource type="Texture2D" uid="uid://djdyeslkil8yv" path="res://metal scrap.png" id="6_53xsp"]
 [ext_resource type="PackedScene" uid="uid://8bntotpas2us" path="res://Scenes/weapon_upgrade.tscn" id="6_qf6rc"]
+[ext_resource type="PackedScene" uid="uid://de6neem2mpnve" path="res://Scenes/dagger.tscn" id="7_5e78q"]
 
 [sub_resource type="GDScript" id="GDScript_6444e"]
 script/source = "extends Sprite2D
@@ -50,6 +52,28 @@ offset_left = 204.0
 offset_top = 125.0
 offset_right = 278.0
 offset_bottom = 49.0
+
+[node name="CanvasLayer3" type="CanvasLayer" parent="Player"]
+offset = Vector2(37.6, 0)
+transform = Transform2D(1, 0, 0, 1, 37.6, 0)
+follow_viewport_enabled = true
+
+[node name="Button" type="Button" parent="Player/CanvasLayer3"]
+anchors_preset = -1
+anchor_left = -0.18100001
+anchor_top = -0.123
+anchor_right = -0.11800001
+anchor_bottom = -0.062000003
+offset_left = -0.48799133
+offset_top = -0.29599762
+offset_right = -0.06399536
+offset_bottom = 0.1760025
+text = "Tab"
+icon = ExtResource("6_53xsp")
+icon_alignment = 2
+
+[node name="dagger2" parent="Player" instance=ExtResource("7_5e78q")]
+position = Vector2(7, -2)
 
 [node name="Node" type="Node" parent="."]
 
