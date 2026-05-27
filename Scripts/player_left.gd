@@ -22,6 +22,7 @@ var coin_sfx : AudioStream = preload	("res://Audio/coin.wav")
 
 func _ready() -> void:
 	add_to_group("player")
+	add_to_group("camera")
 
 func _physics_process(delta):
 	# gravity
@@ -78,6 +79,7 @@ func take_damage(amount: int):
 	OnUpdateHealth.emit(health)
 	_damage_flash()
 	play_sound(take_damage_sfx)
+	print("Player hit! Health: ", health)
 	
 	if health <= 0:
 		call_deferred("game_over")

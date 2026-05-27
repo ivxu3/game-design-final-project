@@ -22,6 +22,7 @@ var coin_sfx : AudioStream = preload	("res://Audio/coin.wav")
 
 func _ready() -> void:
 	add_to_group("player")
+	add_to_group("camera")
 
 func _physics_process(delta):
 	# gravity

@@ -12,7 +12,7 @@ func _refresh_camera():
 	zoom = _calculate_zoom()
 
 func _calculate_position():
-	var players = get_tree().get_nodes_in_group("player")
+	var players = get_tree().get_nodes_in_group("camera")
 	var sumPosition = Vector2(0,0)
 	
 	for player in players:
@@ -29,7 +29,7 @@ func _calculate_zoom():
 
 func _get_max_player_distance():
 	var maxDistance = 0.0
-	var players = get_tree().get_nodes_in_group("player")
+	var players = get_tree().get_nodes_in_group("camera")
 	
 	for player in players:
 		for controlPlayer in players:

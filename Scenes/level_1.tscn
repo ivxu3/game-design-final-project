@@ -61,6 +61,7 @@ tile_set = ExtResource("2_xfk5q")
 position = Vector2(6, -261)
 scene_to_load = ExtResource("8_xrdnt")
 
+<<<<<<< Updated upstream
 [node name="Player" parent="." instance=ExtResource("3_xfk5q")]
 
 [node name="Node" type="Node" parent="."]
@@ -74,3 +75,17 @@ move_speed = 10.0
 
 [node name="Player2" parent="." instance=ExtResource("9_wrinw")]
 position = Vector2(32, -7)
+=======
+[node name="Node" type="Node" parent="."]
+
+[node name="Enemy" parent="Node" instance=ExtResource("4_7p6j4")]
+position = Vector2(37, -14)
+
+[node name="Camera2D" parent="." instance=ExtResource("8_wrinw")]
+
+[node name="LeftPlayer" parent="." instance=ExtResource("3_xfk5q")]
+position = Vector2(-38, -7)
+
+[node name="RightPlayer" parent="." instance=ExtResource("9_wrinw")]
+position = Vector2(-7, -12)
+>>>>>>> Stashed changes

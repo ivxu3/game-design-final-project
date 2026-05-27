@@ -2,12 +2,13 @@ extends Area2D
 
 @export var move_direction : Vector2
 @export var move_speed : float = 20
- 
+
 @onready var start_pos : Vector2 = global_position
 @onready var target_pos : Vector2 = global_position + move_direction
 
 func _ready():
 	$AnimationPlayer.play("fly")
+	$".".body_entered.connect(_on_body_entered)
 
 func _physics_process(delta):
 	global_position = global_position.move_toward(target_pos, move_speed * delta)
@@ -20,7 +21,5 @@ func _physics_process(delta):
 
 
 func _on_body_entered(body):
-	if not body.is_in_group("Player"):
-		return
-	
-	body.take_damage(1)
+	if body.is_in_group("player"):
+		body.take_damage(1)

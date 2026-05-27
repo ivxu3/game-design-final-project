@@ -9,6 +9,12 @@ var player_entered: bool = false:
 		collision.set_deferred("disabled", value)
 		progress_bar.set_deferred("visible", value)
 
+func enter():
+	super.enter()
+	owner.set_physics_process(true)
+	animation_player.play("idle")
+	progress_bar = owner.find_child("ProgressBar")
+
 func transition():
 	if player_entered:
 		get_parent().change_state("Walk")

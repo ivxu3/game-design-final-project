@@ -8,5 +8,5 @@
 [node name="Boss" parent="." instance=ExtResource("1_4kqfc")]
 position = Vector2(558, 365)
 
-[node name="player" parent="." instance=ExtResource("2_0x2vs")]
+[node name="LeftPlayer" parent="." instance=ExtResource("2_0x2vs")]
 position = Vector2(923, 335)
