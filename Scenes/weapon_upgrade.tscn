@@ -1,6 +1,51 @@
-[gd_scene load_steps=2 format=3 uid="uid://8bntotpas2us"]
+[gd_scene load_steps=10 format=3 uid="uid://8bntotpas2us"]
 
 [ext_resource type="Script" uid="uid://dyn3xofqpnodm" path="res://Scenes/weapon_upgrade_UI.gd" id="1_w7444"]
+[ext_resource type="Shader" uid="uid://dahwijt2xyoex" path="res://Scenes/weapon_upgrade.gdshader" id="2_w7444"]
+[ext_resource type="Texture2D" uid="uid://cvi6ssho4kdfp" path="res://Sprites/Objects/dagger.png" id="3_p3qpx"]
+[ext_resource type="Texture2D" uid="uid://bfq7q35h4yqf6" path="res://Sprites/Objects/scythe.png" id="4_ui0k7"]
+[ext_resource type="Texture2D" uid="uid://djdyeslkil8yv" path="res://metal scrap.png" id="4_v0egj"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_rwb2y"]
+shader = ExtResource("2_w7444")
+shader_parameter/lod = 0.0
+
+[sub_resource type="Animation" id="Animation_ui0k7"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:material:shader_parameter/lod")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_p3qpx"]
+resource_name = "blur"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:material:shader_parameter/lod")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 0.800000038]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_v0egj"]
+_data = {
+&"RESET": SubResource("Animation_ui0k7"),
+&"blur": SubResource("Animation_p3qpx")
+}
 
 [node name="WeaponupgradeUI" type="Control"]
 layout_mode = 3
@@ -11,9 +56,70 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_w7444")
 
-[node name="Window" type="Window" parent="."]
-oversampling_override = 1.0
-initial_position = 2
-size = Vector2i(600, 300)
+[node name="ColorRect" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_rwb2y")
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.08800001
+anchor_top = 0.036000002
+anchor_right = 0.50100005
+anchor_bottom = 0.568
+offset_left = -101.37601
+offset_top = -23.328001
+offset_right = 576.84796
+offset_bottom = 292.93597
 
-[connection signal="close_requested" from="Window" to="." method="_on_window_close_requested"]
+[node name="Button" type="Button" parent="."]
+layout_mode = 0
+offset_left = 88.0
+offset_top = 10.0
+offset_right = 284.85657
+offset_bottom = 154.20432
+scale = Vector2(2.545, 2.545)
+icon = ExtResource("3_p3qpx")
+icon_alignment = 2
+expand_icon = true
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.009000001
+anchor_top = 0.028
+anchor_right = 0.43
+anchor_bottom = 0.586
+offset_left = 84.017
+offset_top = -0.144001
+offset_right = 84.02493
+offset_bottom = 0.27197266
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer"]
+layout_mode = 2
+alignment = 2
+
+[node name="Upgradebutton" type="Button" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+text = "Upgrade (5 metal)
+"
+icon = ExtResource("4_v0egj")
+icon_alignment = 2
+
+[node name="Cancelbutton" type="Button" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+text = "Cancel
+"
+
+[node name="Sprite2D" type="Button" parent="."]
+layout_mode = 0
+offset_left = 90.00001
+offset_top = 15.999997
+offset_right = 138.0
+offset_bottom = 55.999996
+scale = Vector2(5.775, 6.25)
+icon = ExtResource("4_ui0k7")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_v0egj")
+}
+
+[connection signal="pressed" from="PanelContainer/VBoxContainer/Cancelbutton" to="." method="_on_cancelbutton_pressed"]
