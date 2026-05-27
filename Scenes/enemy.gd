@@ -8,7 +8,6 @@ extends Area2D
 
 func _ready():
 	$AnimationPlayer.play("walk")
-	
 
 func _physics_process(delta):
 	global_position = global_position.move_toward(target_pos, move_speed * delta)

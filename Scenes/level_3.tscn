@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=4 uid="uid://uohijffr6edw"]
+[gd_scene load_steps=12 format=4 uid="uid://uohijffr6edw"]
 
 [ext_resource type="Script" uid="uid://c3i5rpexykx3s" path="res://Scripts/background_parallax.gd" id="1_5e78q"]
 [ext_resource type="Texture2D" uid="uid://c55oj3jf4m3i0" path="res://Sprites/Tiles/Background_0.png" id="2_vwg62"]
@@ -8,6 +8,8 @@
 [ext_resource type="Texture2D" uid="uid://djdyeslkil8yv" path="res://metal scrap.png" id="6_53xsp"]
 [ext_resource type="PackedScene" uid="uid://8bntotpas2us" path="res://Scenes/weapon_upgrade.tscn" id="6_qf6rc"]
 [ext_resource type="PackedScene" uid="uid://de6neem2mpnve" path="res://Scenes/dagger.tscn" id="7_5e78q"]
+[ext_resource type="PackedScene" uid="uid://brp0dilmr8d6w" path="res://Scenes/humanenemy.tscn" id="9_l4wr6"]
+[ext_resource type="PackedScene" uid="uid://u2b4k6a5qm08" path="res://Scenes/enemy.tscn" id="10_5rvg2"]
 
 [sub_resource type="GDScript" id="GDScript_6444e"]
 script/source = "extends Sprite2D
@@ -56,7 +58,6 @@ offset_bottom = 49.0
 [node name="CanvasLayer3" type="CanvasLayer" parent="Player"]
 offset = Vector2(37.6, 0)
 transform = Transform2D(1, 0, 0, 1, 37.6, 0)
-follow_viewport_enabled = true
 
 [node name="Button" type="Button" parent="Player/CanvasLayer3"]
 anchors_preset = -1
@@ -64,10 +65,10 @@ anchor_left = -0.18100001
 anchor_top = -0.123
 anchor_right = -0.11800001
 anchor_bottom = -0.062000003
-offset_left = -0.48799133
-offset_top = -0.29599762
-offset_right = -0.06399536
-offset_bottom = 0.1760025
+offset_left = 180.91202
+offset_top = 398.704
+offset_right = 247.336
+offset_bottom = 439.176
 text = "Tab"
 icon = ExtResource("6_53xsp")
 icon_alignment = 2
@@ -100,3 +101,10 @@ position = Vector2(1200, -150)
 
 [node name="Coin6" parent="Node" instance=ExtResource("5_vwg62")]
 position = Vector2(1488, -192)
+
+[node name="Enemy" parent="." instance=ExtResource("9_l4wr6")]
+position = Vector2(266, -33)
+
+[node name="human enemy" parent="." instance=ExtResource("10_5rvg2")]
+position = Vector2(328, -8)
+move_direction = Vector2(20, 0)
