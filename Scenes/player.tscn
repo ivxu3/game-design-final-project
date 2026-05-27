@@ -1,158 +1,17 @@
-[gd_scene load_steps=22 format=3 uid="uid://bycdqoj8doefv"]
+[gd_scene load_steps=4 format=3 uid="uid://dv0g1jn3n7ini"]
 
-[ext_resource type="Script" uid="uid://db5l0lqy2gmpb" path="res://Scripts/player.gd" id="1_cvnsp"]
-[ext_resource type="Script" uid="uid://bytgwkwspuydq" path="res://Scripts/camera_shake.gd" id="3_x3wgy"]
-[ext_resource type="Texture2D" uid="uid://b7jtf410n0wcb" path="res://Sprites/Characters/platformer character finished1.png" id="4_7dp3o"]
-[ext_resource type="Script" uid="uid://hfptd803ygap" path="res://Scripts/player_ui.gd" id="4_fkybt"]
-[ext_resource type="Texture2D" uid="uid://dvqed6yc0pupl" path="res://platformer character idle2.png" id="4_ukyrk"]
-[ext_resource type="Texture2D" uid="uid://miq1be7j6s70" path="res://Sprites/Objects/tile_0044.png" id="4_vgqql"]
-[ext_resource type="Texture2D" uid="uid://cm05ahvs2h2yv" path="res://Sprites/Characters/platformer character finished2.png" id="6_h4iuc"]
-[ext_resource type="Texture2D" uid="uid://bxgd0nkyy5jp8" path="res://Sprites/Characters/platformer character finished3.png" id="7_fd4e3"]
-[ext_resource type="Texture2D" uid="uid://ie5jbqfvbwd5" path="res://Sprites/Characters/platformer character finished4.png" id="8_qqcod"]
-[ext_resource type="Texture2D" uid="uid://bhds14hypfp6u" path="res://Sprites/Characters/platformer character finished5.png" id="9_igrcy"]
-[ext_resource type="Texture2D" uid="uid://cvj0lpysajbv1" path="res://Sprites/Characters/platformer character finished6.png" id="10_fs7ks"]
-[ext_resource type="Texture2D" uid="uid://dcxas61l2j485" path="res://Sprites/Characters/platformer character finished7.png" id="11_l6n3p"]
-[ext_resource type="Texture2D" uid="uid://ce8bb0jxtp61s" path="res://Sprites/Characters/platformer character finished8.png" id="12_olqyp"]
-[ext_resource type="Script" uid="uid://cjd4d41n0and7" path="res://Scripts/health.gd" id="15_h4iuc"]
+[ext_resource type="Script" uid="uid://dm4f85m18rkkw" path="res://Scripts/player.gd" id="1_v0iea"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_x3wgy"]
-size = Vector2(14, 24.5)
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_f60y1"]
+size = Vector2(20, 20)
 
-[sub_resource type="Animation" id="Animation_vgqql"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite:texture")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [ExtResource("4_7dp3o")]
-}
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_v0iea"]
 
-[sub_resource type="Animation" id="Animation_6t5aa"]
-resource_name = "idle"
-length = 1.211
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite:texture")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.6666667),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [ExtResource("4_7dp3o"), ExtResource("4_ukyrk")]
-}
+[node name="player" type="CharacterBody2D"]
+script = ExtResource("1_v0iea")
 
-[sub_resource type="Animation" id="Animation_fkybt"]
-resource_name = "jump"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite:texture")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [ExtResource("10_fs7ks")]
-}
-
-[sub_resource type="Animation" id="Animation_x3wgy"]
-resource_name = "move"
-length = 1.219
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite:texture")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.16666667, 0.33333334, 0.46666667, 0.6333333, 0.8, 0.96666664, 1.1666666),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [ExtResource("4_7dp3o"), ExtResource("6_h4iuc"), ExtResource("7_fd4e3"), ExtResource("8_qqcod"), ExtResource("9_igrcy"), ExtResource("10_fs7ks"), ExtResource("11_l6n3p"), ExtResource("12_olqyp")]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_3smsa"]
-_data = {
-&"RESET": SubResource("Animation_vgqql"),
-&"idle": SubResource("Animation_6t5aa"),
-&"jump": SubResource("Animation_fkybt"),
-&"move": SubResource("Animation_x3wgy")
-}
-
-[sub_resource type="LabelSettings" id="LabelSettings_vgqql"]
-font_size = 38
-shadow_size = 3
-shadow_color = Color(0, 0, 0, 1)
-
-[node name="Player" type="CharacterBody2D" groups=["Player"]]
-script = ExtResource("1_cvnsp")
-
-[node name="Sprite" type="Sprite2D" parent="."]
-texture = ExtResource("4_7dp3o")
-offset = Vector2(0, -12)
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = SubResource("PlaceholderTexture2D_f60y1")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -5.75)
-shape = SubResource("RectangleShape2D_x3wgy")
-
-[node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(0, -38)
-zoom = Vector2(3, 3)
-script = ExtResource("3_x3wgy")
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_3smsa")
-}
-
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-script = ExtResource("4_fkybt")
-
-[node name="HealthContainer" type="HBoxContainer" parent="CanvasLayer"]
-offset_right = 440.0
-offset_bottom = 80.0
-
-[node name="Heart" type="TextureRect" parent="CanvasLayer/HealthContainer"]
-layout_mode = 2
-texture = ExtResource("4_vgqql")
-expand_mode = 2
-
-[node name="Heart2" type="TextureRect" parent="CanvasLayer/HealthContainer"]
-layout_mode = 2
-texture = ExtResource("4_vgqql")
-expand_mode = 2
-
-[node name="Heart3" type="TextureRect" parent="CanvasLayer/HealthContainer"]
-layout_mode = 2
-texture = ExtResource("4_vgqql")
-expand_mode = 2
-
-[node name="ScoreText" type="Label" parent="CanvasLayer"]
-offset_top = 80.0
-offset_right = 40.0
-offset_bottom = 103.0
-text = "Score:500"
-label_settings = SubResource("LabelSettings_vgqql")
-
-[node name="Hurtbox" type="Area2D" parent="."]
-collision_mask = 0
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
-position = Vector2(0, -5.75)
-shape = SubResource("RectangleShape2D_x3wgy")
-
-[node name="Health" type="Node" parent="."]
-script = ExtResource("15_h4iuc")
-metadata/_custom_type_script = "uid://cjd4d41n0and7"
+shape = SubResource("RectangleShape2D_v0iea")
