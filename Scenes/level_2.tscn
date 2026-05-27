@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=4 uid="uid://ci7kobeerpaaa"]
+[gd_scene load_steps=12 format=4 uid="uid://ci7kobeerpaaa"]
 
 [ext_resource type="Script" uid="uid://c3i5rpexykx3s" path="res://Scripts/background_parallax.gd" id="1_055b2"]
 [ext_resource type="Texture2D" uid="uid://bpkkj4i0lidm8" path="res://Sprites/Backgrounds/backgroundDesert.png" id="2_055b2"]
@@ -8,6 +8,8 @@
 [ext_resource type="PackedScene" uid="uid://u2b4k6a5qm08" path="res://Scenes/enemy.tscn" id="6_ait6c"]
 [ext_resource type="PackedScene" uid="uid://v4y3k3nglc6a" path="res://Scenes/end_flag.tscn" id="7_vcilj"]
 [ext_resource type="PackedScene" uid="uid://uohijffr6edw" path="res://Scenes/level_3.tscn" id="8_2mgoq"]
+[ext_resource type="PackedScene" uid="uid://dpd5pcdf7kbg4" path="res://Scenes/camera_2d.tscn" id="9_42uki"]
+[ext_resource type="PackedScene" uid="uid://b2wfsypiovcne" path="res://Scenes/player_right.tscn" id="10_t7v2y"]
 
 [sub_resource type="GDScript" id="GDScript_6444e"]
 script/source = "extends Sprite2D
@@ -152,3 +154,8 @@ move_speed = 35.0
 [node name="EndFlag" parent="." instance=ExtResource("7_vcilj")]
 position = Vector2(-25, -261)
 scene_to_load = ExtResource("8_2mgoq")
+
+[node name="Camera2D" parent="." instance=ExtResource("9_42uki")]
+
+[node name="Player2" parent="." instance=ExtResource("10_t7v2y")]
+position = Vector2(2, -33)

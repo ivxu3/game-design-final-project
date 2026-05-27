@@ -1,12 +1,14 @@
-[gd_scene load_steps=9 format=4 uid="uid://ds75lvm8eqf4l"]
+[gd_scene load_steps=11 format=4 uid="uid://ds75lvm8eqf4l"]
 
 [ext_resource type="Texture2D" uid="uid://daddmg1hkc27d" path="res://Sprites/Backgrounds/backgroundForest.png" id="1_8ffim"]
 [ext_resource type="Script" uid="uid://c3i5rpexykx3s" path="res://Scripts/background_parallax.gd" id="1_lsmp6"]
 [ext_resource type="TileSet" uid="uid://bphy4st8ym4ie" path="res://Sprites/Tiles/new_tile_set.tres" id="2_xfk5q"]
-[ext_resource type="PackedScene" uid="uid://bycdqoj8doefv" path="res://Scenes/player.tscn" id="3_xfk5q"]
+[ext_resource type="PackedScene" uid="uid://bycdqoj8doefv" path="res://Scenes/player_left.tscn" id="3_xfk5q"]
 [ext_resource type="PackedScene" uid="uid://u2b4k6a5qm08" path="res://Scenes/enemy.tscn" id="4_7p6j4"]
 [ext_resource type="PackedScene" uid="uid://v4y3k3nglc6a" path="res://Scenes/end_flag.tscn" id="6_evi0p"]
+[ext_resource type="PackedScene" uid="uid://dpd5pcdf7kbg4" path="res://Scenes/camera_2d.tscn" id="8_wrinw"]
 [ext_resource type="PackedScene" uid="uid://ci7kobeerpaaa" path="res://Scenes/level_2.tscn" id="8_xrdnt"]
+[ext_resource type="PackedScene" uid="uid://b2wfsypiovcne" path="res://Scenes/player_right.tscn" id="9_wrinw"]
 
 [sub_resource type="GDScript" id="GDScript_6444e"]
 script/source = "extends Sprite2D
@@ -68,3 +70,7 @@ position = Vector2(0, -8)
 position = Vector2(270, -28)
 move_direction = Vector2(0, -23)
 move_speed = 10.0
+
+[node name="Camera2D" parent="." instance=ExtResource("8_wrinw")]
+
+[node name="Player2" parent="." instance=ExtResource("9_wrinw")]

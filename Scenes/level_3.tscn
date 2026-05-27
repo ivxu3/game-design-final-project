@@ -1,11 +1,20 @@
+<<<<<<< Updated upstream
 [gd_scene load_steps=8 format=4 uid="uid://uohijffr6edw"]
+=======
+[gd_scene load_steps=10 format=4 uid="uid://uohijffr6edw"]
+>>>>>>> Stashed changes
 
 [ext_resource type="Script" uid="uid://c3i5rpexykx3s" path="res://Scripts/background_parallax.gd" id="1_5e78q"]
 [ext_resource type="Texture2D" uid="uid://c55oj3jf4m3i0" path="res://Sprites/Tiles/Background_0.png" id="2_vwg62"]
-[ext_resource type="PackedScene" uid="uid://bycdqoj8doefv" path="res://Scenes/player.tscn" id="3_5rvg2"]
+[ext_resource type="PackedScene" uid="uid://bycdqoj8doefv" path="res://Scenes/player_left.tscn" id="3_5rvg2"]
 [ext_resource type="TileSet" uid="uid://bc4v2peretduo" path="res://Sprites/Tiles/level_3.tres" id="4_s8nj6"]
 [ext_resource type="PackedScene" uid="uid://3yc6l4hoh8mt" path="res://Scenes/metal scrap.tscn" id="5_vwg62"]
 [ext_resource type="Script" uid="uid://dyn3xofqpnodm" path="res://Scenes/weapon_upgrade_UI.gd" id="6_53xsp"]
+<<<<<<< Updated upstream
+=======
+[ext_resource type="PackedScene" uid="uid://dpd5pcdf7kbg4" path="res://Scenes/camera_2d.tscn" id="7_53xsp"]
+[ext_resource type="PackedScene" uid="uid://b2wfsypiovcne" path="res://Scenes/player_right.tscn" id="9_l4wr6"]
+>>>>>>> Stashed changes
 
 [sub_resource type="GDScript" id="GDScript_6444e"]
 script/source = "extends Sprite2D
@@ -84,4 +93,12 @@ offset_bottom = -58.0
 text = "blah
 "
 
+<<<<<<< Updated upstream
+=======
+[node name="Camera2D" parent="." instance=ExtResource("7_53xsp")]
+
+[node name="Player2" parent="." instance=ExtResource("9_l4wr6")]
+position = Vector2(282, -17)
+
+>>>>>>> Stashed changes
 [connection signal="pressed" from="Control/Button" to="Control" method="_on_button_pressed"]
